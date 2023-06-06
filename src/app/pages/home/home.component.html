@@ -1,1 +1,16 @@
-<p>homework - maybe some kind of dashboard would be nice here</p>
+<p>homework - <code>maybe some kind of dashboard would be nice here</code></p>
+
+<ul>
+    <li>since no version was specified, I used Angular 16 and Bootstrap 5installed ng-bootstrap - to prevent having to load jQuery, choosing an optimised bootstrap library for Angular (navbar collapse - could have also used ngx-bootstrap)</li>
+    <li>installed Material UI - to use mat-table for Task 3 as it covers the functions needed, I know it handles client side and server side sorting, pagination, filtering if needed</li>
+    <li>I was about to install and config eslint and prettier but I don't know the coding format you use so that is something I would definitely set up first, I hate untidy code that messes up commits and merges</li>
+    <li>grouped components into layout(header, main, footer) and pages (home, form, table) - obviously I would give them better names, in line with the conventions in the company</li>
+    <li>now contemplating if I should put header, main and footer sections into the app.component template and place the router links there instead of having them as their own components but keeping it separated as to have a more structured and cleaner approach</li>
+    <li>reactive form - error messages? I added a few to help the user, would need to follow company's approach obviously</li>
+    <li>Could improve to disable submit button until all required fields are valid</li>
+    <li>What about checkbox, when it is required it always has to be checked, kind of like a Terms & Conditions checkbox</li>
+    <li>Usage of ng-select package because of familiarityTests should be written, I didn't have the time for that</li>
+    <li>Used datetimepicker library instead of re-inventing the wheel (https://github.com/danielmoncada/date-time-picker)</li>
+    <li>(Could use ngx-translate or other i18n library for multi language support)</li>
+    <li>Stayed with client side sorting for now; however when large datasets requested, server-side filtering/sorting/pagination might be more suitable, would have to adapt code to send modified request to API that includes skip/limit/sort/filter parametersWanted to do feature modules for pages, layout, but didn't have time to split it up and for small projects like this this wouldn’t make a difference - but just wanting to show that I am aware that this improves performance, when feature modules are lazy loaded for their respective routes</li>
+</ul>

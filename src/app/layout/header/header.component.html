@@ -2,22 +2,22 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <!-- Container wrapper -->
     <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button (click)="isCollapsed = !isCollapsed" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Collapsible, for smaller screens, break between sm/md bootstrap breakpoint -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- show the navigation menu in a list, but horizontally -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" routerLink="/home" routerLinkActive="active">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" routerLink="/form" routerLinkActive="active">Form</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" routerLink="/table" routerLinkActive="active">Table</a>
-                  </li>
+              <li class="nav-item">
+                <a class="nav-link active" routerLink="/home" routerLinkActive="active">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/form" routerLinkActive="active">Form</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/table" routerLinkActive="active">Table</a>
+              </li>
             </ul>
         </div>
         <!-- Collapsible -->

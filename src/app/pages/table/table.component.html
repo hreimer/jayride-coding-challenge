@@ -1,1 +1,48 @@
-<p>table works!</p>
+<mat-table
+    [dataSource]="dataSource"
+    matSort
+    matSortActive="pricePerPassenger"
+    matSortDirection="asc"
+    class="full-width bg-transparent mat-table-pills mat-elevation-z8"
+  >
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+  </ng-container>
+
+  <!-- Vehicle Type Column -->
+  <ng-container matColumnDef="vehicleType">
+    <mat-header-cell *matHeaderCellDef mat-sort-header mat-sort-header="vehicleType.name"> Vehicle Type </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.vehicleType.name}} </mat-cell>
+  </ng-container>
+
+  <!-- Price per Passenger Column -->
+  <ng-container matColumnDef="pricePerPassenger">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Price per Passenger </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.pricePerPassenger}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-list>
+    <mat-list-item>
+        <span matListItemTitle>Total Listings</span>
+        <span matListItemLine>{{ totalCountListings }}</span>
+      </mat-list-item>
+    <mat-list-item>
+      <span matListItemTitle>Average Price</span>
+      <span matListItemLine>{{ averagePrice | number: '1.2-2' }}</span>
+    </mat-list-item>
+    <mat-list-item>
+      <span matListItemTitle>Lowest price</span>
+      <span matListItemLine>{{ minPrice }}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Highest price</span>
+        <span matListItemLine>{{ maxPrice }}</span>
+      </mat-list-item>
+  </mat-list>

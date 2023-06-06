@@ -70,7 +70,8 @@
               "browserTarget": "jayride-coding-challenge:build:production"
             },
             "development": {
-              "browserTarget": "jayride-coding-challenge:build:development"
+              "browserTarget": "jayride-coding-challenge:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
