@@ -3,6 +3,21 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Launch Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:4200",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}/src",
+      "sourceMapPathOverrides": {
+          "webpack:/*": "${webRoot}/*",
+          "/./*": "${webRoot}/*",
+          "/src/*": "${webRoot}/*",
+          "/*": "*",
+          "/./~/*": "${webRoot}/node_modules/*"
+      }
+    },
+    {
       "name": "ng serve",
       "type": "chrome",
       "request": "launch",

@@ -1,0 +1,86 @@
+<div class="d-flex">
+    <form class="w-100" [formGroup]="requestForm" (ngSubmit)="sendRequest()">
+        <div class="row">
+            <div class="col">
+                <mat-form-field>
+                    <mat-label>Traveller name</mat-label>
+                    <input matInput type="text" formControlName="travellerName" id="travellerName">
+                    <mat-hint>First and last name</mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field>
+                    <mat-label>Traveller email</mat-label>
+                    <input matInput type="text" formControlName="travellerEmail" id="travellerEmail">
+                    <mat-hint>Valid email address</mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <!-- Why did I use ng-select here you may ask: I am familiar with this package and know what it can do, in a real work scenario I would either use the packages that are used/established in the team or if I find they lack features, explore new ones that don't compromise on critical features - or fork a good one and extend it if nothing suitable exists -->
+                <ng-select
+                    formControlName="channel"
+                    class="p-1"
+                    [ngClass]="
+                    (requestForm.get('channel')?.errors && requestForm.get('channel')?.touched) ? 'is-invalid' : ''"
+                    [clearable]="true"
+                    [items]="channels"
+                    appearance="outline"
+                    placeholder="Select channel*"
+                >
+                    {{ channel }}
+                </ng-select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col p-2">
+                <!-- checkbox: when it is required it always has to be checked, kind of like a Terms & Conditions checkbox where false = can not submit form, therefore requiredTrue -->
+                <input type="checkbox" formControlName="meetGreetRequested" id="meetGreetRequested" class="form-check-input m-2 p-2" [ngClass]="{ 'is-invalid': isSubmitted && form['meetGreetRequested'].errors }" />
+                <!-- I agree it needs better styling -->
+                <label for="meetGreetRequested" class="form-check-label p-2">Meet & Greet requested</label>
+                <div *ngIf="isSubmitted && form['meetGreetRequested'].errors" class="invalid-feedback">Accept 'Meet & Greet requested' is required</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col pb-3">
+                <mat-label>Travel datetime*</mat-label>
+                <div class="datepicker-wrapper py-2">
+                    <!-- I agree this one needs better styling too -->
+                    <input formControlName="travelDateTime" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" placeholder="Date and time of travel" [ngClass]="{ 'is-invalid': isSubmitted && form['travelDateTime'].errors }" />
+                    <!-- Used datetimepicker library instead of re-inventing the wheel (https://github.com/danielmoncada/date-time-picker) - it is a recent fork with 122 stars on github and 25k weekly d/l on npm, ng16 compatible  -->
+                    <owl-date-time #dt2></owl-date-time>
+                    <div *ngIf="isSubmitted && form['travelDateTime'].errors" class="is-invalid">
+                        Please provide a travel date and time
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field>
+                    <mat-label>Booking price</mat-label>
+                    <!-- used inputType number here as pattern="" didn't seem to work properly, and why use RegEx when there is a built-in property that handles number input -->
+                    <input matInput type="number" formControlName="bookingPrice" id="bookingPrice">
+                    <mat-hint>in AUD</mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col pt-2">
+                <!-- just for my convenience when testing -->
+                <button class="btn btn-secondary btn-block" type="reset" (click)="resetForm()">
+                    Reset
+                </button>
+            </div>
+            <!-- here the submit btn could have been disabled as long as there are errors in the form when moving from one field to the next: this is where I would double-check, if this behaviour is wanted -->
+            <div class="col justify-content-end pt-2 d-flex">
+                <button type="submit" class="btn btn-primary btn-block">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

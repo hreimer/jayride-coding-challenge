@@ -1,0 +1,15 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+.is-invalid {
+    color: $danger;
+    border-color: $danger;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.ng-select.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }
